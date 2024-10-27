@@ -486,3 +486,6 @@ $RECYCLE.BIN/
 # Editor config files
 .azuredatastudio/
 .vscode/
+
+# drawio
+*.drawio.bkp
