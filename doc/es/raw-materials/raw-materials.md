@@ -5,9 +5,6 @@
 ![rawmaterials.RawMaterials](img/rawmaterials.RawMaterials.jpeg)
 
 ```sql
-CREATE SCHEMA [rawmaterials];
-GO
-
 CREATE TABLE [rawmaterials].[RawMaterials] (
       [Id]                  CHAR(24)        NOT NULL
     , [Name]                NVARCHAR(255)   NOT NULL
