@@ -1,6 +1,3 @@
-CREATE PROCEDURE [core].[usp_DBErrorLogger](
-	@userName	NVARCHAR(128) = ''
-)
 /*
 <documentation>
 	<object type="P" schema="core" name="usp_DBErrorLogger" />
@@ -11,9 +8,19 @@ CREATE PROCEDURE [core].[usp_DBErrorLogger](
 	<author>Jheison J. Mayta C.</author>
 	<createdAt>2024.10.26</createdAt>
 	<sourceLink></sourceLink>
-	<example></example>
+	<example>
+		-- ... more code above
+		END TRY
+		BEGIN CATCH
+			EXEC [core].[usp_DBErrorLogger];
+		END CATCH
+		-- and more code below ...
+	</example>
 </documentation>
 */
+CREATE PROCEDURE [core].[usp_DBErrorLogger](
+	@userName	NVARCHAR(128) = ''
+)
 AS
 SET NOCOUNT ON;
 SET XACT_ABORT ON;
