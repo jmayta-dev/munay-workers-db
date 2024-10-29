@@ -11,7 +11,7 @@ CREATE TABLE [rawmaterials].[RawMaterials] (
     , [UNSPSC]              [CHAR](11)          NULL
     , [UNSPSCDescription]   [NVARCHAR](400)     NULL
     , [CreatedAt]           [DATETIMEOFFSET]    NULL
-    , [UdatedAt]            [DATETIMEOFFSET]    NULL
+    , [UpdatedAt]           [DATETIMEOFFSET]    NULL
     , [IsEnabled]           [BIT]               NOT NULL
 )
 ```
@@ -39,7 +39,7 @@ CREATE TABLE [rawmaterials].[RawMaterials] (
 + **CreatedAt**
     <br> Fecha y hora de registro (inc. información de zona horaria).
 
-+ **UdatedAt**
++ **UpdatedAt**
     <br> Fecha y hora de última actualización (inc. información de zona horaria).
 + **IsEnabled**
     <br> Indicador de habilitación. Determina si el registro está habilitado o deshabilitado.
