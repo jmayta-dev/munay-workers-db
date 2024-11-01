@@ -15,8 +15,10 @@ AS
 SET NOCOUNT ON;
 BEGIN
 	SELECT 
-		[Id], [Name], [UNSPSC], [UNSPSCDescription],
-		[CreatedAt], [UpdatedAt], [IsEnabled]
+		  [Id]			, [Name]
+		, [UNSPSC]		, [UNSPSCDescription]
+		, [CreatedAt]	, [UpdatedAt]
+		, [IsEnabled]
 	FROM [rawmaterials].[RawMaterials];
 END
 GO

@@ -1,20 +1,20 @@
 /*
 <documentation>
 	<object type="U" schema="rawmaterials" name="RawMaterials" />
-	<summary>Table for store Raw Materials information</summary>
+	<summary>Table for store Raw Materials</summary>
 	<author>Jheison J. Mayta C.</author>
 	<createdAt>2024.10.27</createdAt>
 	<sourceLink></sourceLink>
 </documentation>
 */
 CREATE TABLE [rawmaterials].[RawMaterials] (
-	  [Id]					CHAR(24)				NOT NULL
-	, [Name]				NVARCHAR(255)			NOT NULL
-	, [UNSPSC]				CHAR(11)				NULL
-	, [UNSPSCDescription]	NVARCHAR(400)			NULL
-	, [CreatedAt]			DATETIMEOFFSET			NULL
-	, [UdatedAt]			DATETIMEOFFSET			NULL
-	, [IsEnabled]			BIT						NOT NULL
+	  [Id]					[CHAR](24)			NOT NULL
+	, [Name]				[NVARCHAR](255)		NOT NULL
+	, [UNSPSC]				[CHAR](11)			NULL
+	, [UNSPSCDescription]	[NVARCHAR](400)		NULL
+	, [CreatedAt]			[DATETIMEOFFSET]	NULL
+	, [UpdatedAt]			[DATETIMEOFFSET]	NULL
+	, [IsEnabled]			[BIT]				NOT NULL
 ) ON [PRIMARY]
 GO
 -- CONSTRAINTS
@@ -30,11 +30,11 @@ GO
 -- INDEXES
 CREATE NONCLUSTERED INDEX IXC_RawMaterials_Name
 	ON [rawmaterials].[RawMaterials] ([UNSPSC])
-		INCLUDE ([Name], [CreatedAt], [UdatedAt], [IsEnabled]);
+		INCLUDE ([Name], [CreatedAt], [UpdatedAt], [IsEnabled]);
 GO
 CREATE NONCLUSTERED INDEX IX_RawMaterials_UNSPSC
 	ON [rawmaterials].[RawMaterials] ([UNSPSC])
-		INCLUDE ([UNSPSCDescription], [CreatedAt], [UdatedAt], [IsEnabled]);
+		INCLUDE ([UNSPSCDescription], [CreatedAt], [UpdatedAt], [IsEnabled]);
 GO
 -- EXTENDER PROPERTIES
 EXEC sp_addextendedproperty
@@ -83,7 +83,7 @@ EXEC sp_addextendedproperty
 , @value		= 'Last update date and time (includes time zone information)'
 , @level0type	= 'SCHEMA'		, @level0name	= N'rawmaterials'
 , @level1type	= 'TABLE'		, @level1name	= N'RawMaterials'
-, @level2type	= 'COLUMN'		, @level2name	= N'UdatedAt';
+, @level2type	= 'COLUMN'		, @level2name	= N'UpdatedAt';
 GO
 EXEC sp_addextendedproperty
   @name			= N'MS_Description'
