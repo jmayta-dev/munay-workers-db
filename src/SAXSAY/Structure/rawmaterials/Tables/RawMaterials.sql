@@ -24,7 +24,7 @@ ALTER TABLE [rawmaterials].[RawMaterials]
 GO
 ALTER TABLE [rawmaterials].[RawMaterials]
 	ADD CONSTRAINT DF_RawMaterials_CreatedAt
-		DEFAULT SYSDATETIMEOFFSET()
+		DEFAULT SYSDATETIMEOFFSET() AT TIME ZONE 'UTC'
 			FOR [CreatedAt];
 GO
 -- INDEXES
