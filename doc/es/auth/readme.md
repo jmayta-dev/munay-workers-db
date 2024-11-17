@@ -9,18 +9,18 @@
 ```sql
 CREATE TABLE [auth].[Users]
 (
-	  [Id]				[CHAR](24)			NOT NULL
-	, [Password]		[NVARCHAR](255)		NOT NULL
-	, [LastLogin]		[DATETIMEOFFSET]	NULL
-	, [IsSuperuser]		[BIT]				NULL
-	, [Username]		[VARCHAR](150)		NOT NULL
-	, [FirstName]		[NVARCHAR](250)		NULL
-	, [LastName]		[NVARCHAR](250)		NULL
-	, [Email]			[NVARCHAR](250)		NULL
-	, [IsStaff]			[BIT]				NULL
-	, [IsActive]		[BIT]				NOT NULL
-	, [DateJoined]		[DATETIMEOFFSET]	NULL
-	, [UpdatedAt]		[DATETIMEOFFSET]	NULL
+     [Id]              [CHAR](24)          NOT NULL
+    ,[Password]        [NVARCHAR](255)     NOT NULL
+    ,[LastLogin]       [DATETIMEOFFSET]    NULL
+    ,[IsSuperuser]     [BIT]               NULL
+    ,[Username]        [VARCHAR](150)      NOT NULL
+    ,[FirstName]       [NVARCHAR](250)     NULL
+    ,[LastName]        [NVARCHAR](250)     NULL
+    ,[Email]           [NVARCHAR](250)     NULL
+    ,[IsStaff]         [BIT]               NULL
+    ,[IsActive]        [BIT]               NOT NULL
+    ,[DateJoined]      [DATETIMEOFFSET]    NULL
+    ,[UpdatedAt]       [DATETIMEOFFSET]    NULL
 )
 ```
 ### Referencia:
@@ -61,21 +61,21 @@ CREATE TABLE [auth].[Users]
     <br> Fecha y hora cuando la información del usuario fue actualizada por última vez.
 
 ### 🔸 SALES (Salts)
-Las **sales** (*salt*) son cademns usadas en la encriptación de contraseñas de los usuarios.
+Las **sales** (*salt*) son cadenas usadas en la encriptación de contraseñas de los usuarios.
 
 ![auth.Users](img/auth.Salts.png)
 
 ```sql
 CREATE TABLE [auth].[Salts]
 (
-	  [Id]			[BIGINT] IDENTITY(1,1)	NOT NULL
-	, [UserId]		[CHAR](24)				NOT NULL
-	, [Salt]		[NVARCHAR](255)			NOT NULL
-	, [CreatedAt]	[DATETIMEOFFSET]		NULL
-	, [UpdatedAt]	[DATETIMEOFFSET]		NULL
-	, [HostName]	[NVARCHAR](128)			NULL
-	, [AppName]		[NVARCHAR](128)			NULL
-	, [UserName]	[NVARCHAR](128)			NULL
+     [Id]          [BIGINT] IDENTITY(1,1)  NOT NULL
+    ,[UserId]      [CHAR](24)              NOT NULL
+    ,[Salt]        [NVARCHAR](255)         NOT NULL
+    ,[CreatedAt]   [DATETIMEOFFSET]        NULL
+    ,[UpdatedAt]   [DATETIMEOFFSET]        NULL
+    ,[HostName]    [NVARCHAR](128)         NULL
+    ,[AppName]     [NVARCHAR](128)         NULL
+    ,[UserName]    [NVARCHAR](128)         NULL
 )
 ```
 
@@ -93,7 +93,7 @@ CREATE TABLE [auth].[Salts]
 + **UpdatedAt**
     <br> Fecha y hora de la última actualización realizada.
 
-###### ・ Auditoría ・
+<small>**・ Campos de Auditoría ・**</small>
 
 + **HostName**
     <br> Estación de trabajo desde donde se realizó la actualización.
