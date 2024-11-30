@@ -27,11 +27,11 @@ BEGIN
 	BEGIN TRY
 		UPDATE [rawmaterials].[RawMaterials]
 		SET
-			  [Name]				= @name
-			, [UNSPSC]				= @unspsc
-			, [UNSPSCDescription]	= @unspscDescription
-			, [UpdatedAt]			= @_updatedAt
-			, [IsEnabled]			= @isEnabled
+			 [Name]					= @name
+			,[UNSPSC]				= @unspsc
+			,[UNSPSCDescription]	= @unspscDescription
+			,[UpdatedAt]			= @_updatedAt
+			,[IsEnabled]			= @isEnabled
 		WHERE [Id] = @id;
 	END TRY
 	BEGIN CATCH

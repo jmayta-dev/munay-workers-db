@@ -1,20 +1,3 @@
-CREATE TABLE [core].[ErrorLog]
-(
-	[Id]			[BIGINT] IDENTITY(1,1),
-	[Number]		[INT]					NULL,		-- ERROR_NUMBER()
-	[Severity]		[INT]					NULL,		-- ERROR_SEVERITY()
-	[State]		 	[INT]					NULL,		-- ERROR_STATE()
-	[Line]		  	[INT]					NULL,		-- ERROR_LINE()
-	[Message]		[NVARCHAR](4000)		NULL,		-- ERROR_MESSAGE()
-	[Procedure]		[NVARCHAR](128)			NULL,		-- ERROR_PROCEDURE()
-	[StackTrace]	[NVARCHAR](4000)		NULL,		-- APPLICATION CLIENT ST
-
-	[HostName]		[NVARCHAR](128)	  		NULL,		-- HOST_NAME()
-	[AppName]		[NVARCHAR](128)	  		NULL,		-- APP_NAME()
-	[UserName]		[NVARCHAR](128)	  		NULL,		-- SUSER_SNAME()
-	[CreatedAt]	  	[DATETIME]		  		NULL		-- GETUTCDATE()
-) ON [PRIMARY]
-GO
 /*
 <documentation>
 	<object type="U" schema="core" name="ErrorLog" />
@@ -24,10 +7,27 @@ GO
 	<author>Jheison J. Mayta C.</author>
 	<createdAt>2024.10.26</createdAt>
 	<sourceLink></sourceLink>
-	<example></example>
 </documentation>
 */
+CREATE TABLE [core].[ErrorLog]
+(
+	[Id]			[BIGINT] IDENTITY(1,1),
+	[Number]		[INT]					NULL,	-- ERROR_NUMBER()
+	[Severity]		[INT]					NULL,	-- ERROR_SEVERITY()
+	[State]		 	[INT]					NULL,	-- ERROR_STATE()
+	[Line]		  	[INT]					NULL,	-- ERROR_LINE()
+	[Message]		[NVARCHAR](4000)		NULL,	-- ERROR_MESSAGE()
+	[Procedure]		[NVARCHAR](128)			NULL,	-- ERROR_PROCEDURE()
+	[StackTrace]	[NVARCHAR](4000)		NULL,	-- APPLICATION CLIENT ST
 
+	[HostName]		[NVARCHAR](128)	  		NULL,	-- HOST_NAME()
+	[AppName]		[NVARCHAR](128)	  		NULL,	-- APP_NAME()
+	[UserName]		[NVARCHAR](128)	  		NULL,	-- SUSER_SNAME()
+	[CreatedAt]	  	[DATETIME]		  		NULL	-- GETUTCDATE()
+) ON [PRIMARY]
+GO
+
+--> CONSTRAINTS
 ALTER TABLE [core].[ErrorLog]
 	ADD CONSTRAINT PK_ErrorLog_Id PRIMARY KEY CLUSTERED ([Id]);
 GO
@@ -67,12 +67,12 @@ ALTER TABLE [core].[ErrorLog]
 	ADD CONSTRAINT DF_ErrorLog_CreatedAt DEFAULT GETUTCDATE() FOR [CreatedAt]
 GO
 
--- INDEXES
+--> INDEXES
 CREATE NONCLUSTERED INDEX IXC_ErrorLog_CreatedAt ON [core].[ErrorLog] ([CreatedAt])
 	INCLUDE ([Severity])
 GO
 
--- EXTENDED PROPERTIES
+--> EXTENDED PROPERTIES
 EXEC sp_addextendedproperty
 	@name			= N'MS_Description'
 	, @value		= 'Error Log table'
