@@ -1,0 +1,1 @@
+INSERT INTO unspsc.Version([Id],[Description],[IsLatest])VALUES (1, 'v14.0801', 1)
