@@ -67,7 +67,7 @@ BEGIN
         , fam.FamilyTitle
         , 'Family'
         , 1
-    FROM unspsc.Family fam -- sp_help 'unspsc.Family'
+    FROM unspsc.Family fam
     WHERE fam.FamilyTitle LIKE CONCAT('%',@queryString,'%')
         OR Id LIKE CONCAT('%',@queryString,'%')
     -- <- BUSCAR FAMILIA //
