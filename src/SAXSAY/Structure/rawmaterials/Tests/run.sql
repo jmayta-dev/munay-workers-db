@@ -1,0 +1,4 @@
+USE MWSAXSAYDB;
+GO
+EXECUTE tSQLt.Run 'TestRawMaterials';
+GO
