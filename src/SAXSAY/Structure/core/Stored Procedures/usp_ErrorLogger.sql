@@ -34,13 +34,14 @@ SET XACT_ABORT ON;
 BEGIN
     -- IF NO ERROR, RETURN
     IF(ERROR_NUMBER() IS NULL) RETURN;
-    
-    DECLARE
-          @userName nvarchar(128)
-        , @errorId  bigint;
 
-    -- ARRANGE
-    SET @userName = IIF(COALESCE(@pUserName, '') = '', SUSER_SNAME(), @pUserName);
+    -- // ARRANGE ->
+    DECLARE
+          @vUserName nvarchar(128)
+        , @vErrorId  bigint;
+
+    SET @vUserName = IIF(COALESCE(@pUserName, '') = '', SUSER_SNAME(), @pUserName);
+    -- <- ARRANGE //
 
     -- // ERROR INSERTION ->
     INSERT INTO core.ErrorLog (
@@ -52,19 +53,19 @@ BEGIN
           ERROR_NUMBER(), ERROR_SEVERITY(), ERROR_STATE()
         , ERROR_LINE()  , ERROR_MESSAGE() , COALESCE(ERROR_PROCEDURE(), 'Not within procedure')
         , ''            , HOST_NAME()     , APP_NAME()
-        , @userName     , GETUTCDATE()
+        , @vUserName    , GETUTCDATE()
     )
     -- <- ERROR INSERTION //
 
     -- // SHOW ERROR INFORMATION ->
-    SET @errorId = COALESCE(@@IDENTITY, 0)
+    SET @vErrorId = COALESCE(SCOPE_IDENTITY(), 0)
 
     SELECT
           Id       , ErrorNumber , ErrorSeverity , ErrorState
         , ErrorLine, ErrorMessage, ErrorProcedure, StackTrace
         , HostName , AppName     , UserName      , CreatedAt
     FROM core.ErrorLog
-    WHERE Id = @errorId;
+    WHERE Id = @vErrorId;
     -- <- SHOW ERROR INFORMATION //
 END
 GO
