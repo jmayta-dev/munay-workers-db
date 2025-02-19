@@ -1,9 +1,25 @@
-IF OBJECT_ID(N'TestRawMaterials.Test throw exception when passing invalid parameters', N'P') IS NULL
+IF OBJECT_ID(N'TestRawMaterials.[Test throw exception when passing invalid parameters]', N'P') IS NULL
 EXECUTE('CREATE PROCEDURE TestRawMaterials.[Test throw exception when passing invalid parameters] AS SELECT 1');
 GO
 
 
 ALTER PROCEDURE TestRawMaterials.[Test throw exception when passing invalid parameters]
+/*
+<documentation>
+    <object
+        type="P" schema="TestRawMaterials"
+        name="Test throw exception when passing invalid parameters" />
+    <summary>
+        Test throwing exception when pass an invalid parameter to rawmaterials.usp_InsertRawMaterial
+    </summary>
+    <author>Jheison J. Mayta C.</author>
+    <createdAt>2025.02.18</createdAt>
+    <sourceLink></sourceLink>
+    <example>
+        EXECUTE tSQLt.Run 'TestRawMaterials.Test throw exception when passing invalid parameters';
+    </example>
+</documentation>
+*/
 AS
 BEGIN
     -- // ARRANGE ->

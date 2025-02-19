@@ -5,6 +5,7 @@ IF(OBJECT_ID(N'TestRawMaterials.SetUp') IS NULL)
 EXECUTE('CREATE PROCEDURE TestRawMaterials.SetUp AS SELECT 1;')
 GO
 
+
 ALTER PROCEDURE TestRawMaterials.SetUp
 /*
 <documentation>
