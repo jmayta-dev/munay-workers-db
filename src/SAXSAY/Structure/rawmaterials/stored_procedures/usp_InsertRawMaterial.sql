@@ -51,7 +51,7 @@ BEGIN
     END TRY
     BEGIN CATCH
         EXECUTE core.usp_ErrorLogger;
-        THROW;
+            THROW;
     END CATCH
 
     DECLARE
@@ -71,7 +71,7 @@ BEGIN
     END TRY
     BEGIN CATCH
         EXECUTE core.usp_ErrorLogger;
-        THROW;
+            THROW;
     END CATCH
 
     RETURN 0;
