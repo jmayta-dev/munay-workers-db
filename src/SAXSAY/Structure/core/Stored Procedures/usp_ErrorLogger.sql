@@ -4,7 +4,9 @@ GO
 
 
 ALTER PROCEDURE core.usp_ErrorLogger(
-    @pUserName   nvarchar(128) = NULL
+      @pUserName          nvarchar(128) = NULL
+    , @pShowMessageReport bit           = 0
+    , @pShowTableReport   bit           = 0
 )
 /*
 <documentation>
@@ -38,6 +40,8 @@ BEGIN
     -- // ARRANGE ->
     DECLARE
           @vUserName nvarchar(128)
+        , @vShowMessageReport bit = @pShowMessageReport
+        , @vShowTableReport bit   = @pShowTableReport
         , @vErrorId  bigint;
 
     SET @vUserName = IIF(COALESCE(@pUserName, '') = '', SUSER_SNAME(), @pUserName);
@@ -59,13 +63,20 @@ BEGIN
 
     -- // SHOW ERROR INFORMATION ->
     SET @vErrorId = COALESCE(SCOPE_IDENTITY(), 0)
+    IF(@vShowTableReport = 1)
+    BEGIN
+        SELECT
+              Id       , ErrorNumber , ErrorSeverity , ErrorState
+            , ErrorLine, ErrorMessage, ErrorProcedure, StackTrace
+            , HostName , AppName     , UserName      , CreatedAt
+        FROM core.ErrorLog
+        WHERE Id = @vErrorId;
+    END
 
-    SELECT
-          Id       , ErrorNumber , ErrorSeverity , ErrorState
-        , ErrorLine, ErrorMessage, ErrorProcedure, StackTrace
-        , HostName , AppName     , UserName      , CreatedAt
-    FROM core.ErrorLog
-    WHERE Id = @vErrorId;
+    IF(@vShowMessageReport = 1)
+    BEGIN
+        PRINT CONCAT_WS(' | ',ERROR_MESSAGE(),GETUTCDATE());
+    END
     -- <- SHOW ERROR INFORMATION //
 END
 GO
