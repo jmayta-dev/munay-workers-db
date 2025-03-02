@@ -51,6 +51,9 @@ BEGIN
     END TRY
     BEGIN CATCH
         EXECUTE core.usp_ErrorLogger;
+        IF (@@NESTLEVEL = 1)
+            RETURN -1;
+        ELSE
             THROW;
     END CATCH
 
@@ -71,6 +74,9 @@ BEGIN
     END TRY
     BEGIN CATCH
         EXECUTE core.usp_ErrorLogger;
+        IF (@@NESTLEVEL = 1)
+            RETURN -1;
+        ELSE
             THROW;
     END CATCH
 
