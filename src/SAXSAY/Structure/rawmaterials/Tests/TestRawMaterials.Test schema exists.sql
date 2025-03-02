@@ -28,7 +28,6 @@ BEGIN
     CREATE TABLE #Actual (schema_name sysname);
     CREATE TABLE #Expected (schema_name sysname);
 
-    -- fill Expected
     INSERT INTO #Expected(schema_name)
     VALUES(@vSchemaName);
     -- <- ARRANGE //
