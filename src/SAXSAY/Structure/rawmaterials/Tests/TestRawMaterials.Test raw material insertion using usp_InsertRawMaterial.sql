@@ -1,18 +1,18 @@
-IF OBJECT_ID(N'TestRawMaterials.Test raw material insertion', N'P') IS NULL
-EXECUTE('CREATE PROCEDURE TestRawMaterials.[Test raw material insertion] AS SELECT 1');
+IF OBJECT_ID(N'TestRawMaterials.[Test raw material insertion using usp_InsertRawMaterial]', N'P') IS NULL
+EXECUTE('CREATE PROCEDURE TestRawMaterials.[Test raw material insertion using usp_InsertRawMaterial] AS SELECT 1');
 GO
 
 
-ALTER PROCEDURE TestRawMaterials.[Test raw material insertion]
+ALTER PROCEDURE TestRawMaterials.[Test raw material insertion using usp_InsertRawMaterial]
 /*
 <documentation>
-    <object type="P" schema="TestRawMaterials" name="Test raw material insertion" />
+    <object type="P" schema="TestRawMaterials" name="Test raw material insertion using usp_InsertRawMaterial" />
     <summary>Test inserting raw material through a stored procedure</summary>
     <author>Jheison J. Mayta C.</author>
     <createdAt>2025.02.18</createdAt>
     <sourceLink></sourceLink>
     <example>
-        EXECUTE tSQLt.Run 'TestRawMaterials.Test raw material insertion';
+        EXECUTE tSQLt.Run 'TestRawMaterials.Test raw material insertion using usp_InsertRawMaterial';
     </example>
 </documentation>
 */
